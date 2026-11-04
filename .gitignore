@@ -9,3 +9,4 @@ work/
 .nextflow_home/
 __pycache__/
 *.bundle
+manuscript/__pycache__/

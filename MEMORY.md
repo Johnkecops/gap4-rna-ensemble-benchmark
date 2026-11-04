@@ -39,3 +39,8 @@
 **In progress:** none. MERGE-RNA per-RNA mode timed out (~2 h/RNA, no convergence).
 **Decisions made:** see entries above.
 **Next session:** get RASP/bpRNA/Ribonanza from an unrestricted network to fill >500 nt; rerun per-RNA MERGE with an iteration cap; decide on TVAE-RNA.
+
+## 2026-11-04, Manuscript for Computational Biology and Chemistry
+**What was decided:** single-author research article built from manuscript/manuscript.md by manuscript/build.py into RNA-structure-Manuscript-Arli.docx; Elsevier numbered references (33, all PubMed-validated, manuscript/reference_validation.tsv); 12 OMML display equations, 4 boxed algorithms; checklist manuscript/check_manuscript.py (19/19 pass). Data statement: public on acceptance.
+**Why:** user approved plan.md; journal guide (sciencedirect.com) blocked, so Elsevier norms used and unverified rules flagged.
+**What was rejected:** citations in declarations and highlights (exempt by convention); non-PubMed references (could not be validated here).
