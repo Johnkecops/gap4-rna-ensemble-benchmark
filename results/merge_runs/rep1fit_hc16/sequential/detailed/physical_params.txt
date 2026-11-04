@@ -1,0 +1,20 @@
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:49:51
+System(s): hc16
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4476  # Chemical potential (kcal/mol)
+p_b     =   0.0000  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8517  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3263      0.0000
+  C        0.2093      0.0000
+  G        0.1346      0.1346
+  U        0.0104      0.0104
+
+[End of parameters summary]

@@ -1,0 +1,47 @@
+MERGE-RNA Fit Summary
+============================================================
+Date: 2026-11-04 05:17:37
+System(s): hc16
+Output: results/merge_runs/rep1fit_hc16/sequential
+
+Configuration:
+  Fit mode: sequential
+  DMS mode: True
+  Infer soft constraints: False
+  Max iterations: None
+  Strict convergence: False
+============================================================
+
+
+============================================================
+Phase 1: Fitting physical parameters
+============================================================
+
+Iteration     1: Total loss = 23937.060657
+Iteration    10: Total loss = 18036.886081
+Iteration    20: Total loss = 15804.320204
+Iteration    30: Total loss = 15786.230013
+Iteration    34: Total loss = 15765.253924
+
+Fitted physical parameters:
+  mu_r = 0.4476
+  p_b  = 0.0000
+  m0   = 0.000000
+  m1   = 0.8517
+
+  Binding probabilities (p_bind):
+           Unpaired    Paired
+    A        0.3263      0.0000
+    C        0.2093      0.0000
+    G        0.1346      0.1346
+    U        0.0104      0.0104
+
+Convergence:
+  Status: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  Success: True
+
+============================================================
+Phase 2: Fitting soft constraints (lambda_sc)
+============================================================
+
+Iteration     1: Total loss = 13958.412805

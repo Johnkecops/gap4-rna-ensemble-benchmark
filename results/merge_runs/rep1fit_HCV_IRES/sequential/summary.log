@@ -1,0 +1,48 @@
+MERGE-RNA Fit Summary
+============================================================
+Date: 2026-11-04 05:17:37
+System(s): HCV_IRES
+Output: results/merge_runs/rep1fit_HCV_IRES/sequential
+
+Configuration:
+  Fit mode: sequential
+  DMS mode: True
+  Infer soft constraints: False
+  Max iterations: None
+  Strict convergence: False
+============================================================
+
+
+============================================================
+Phase 1: Fitting physical parameters
+============================================================
+
+Iteration     1: Total loss = 22960.315274
+Iteration    10: Total loss = 19106.290833
+Iteration    20: Total loss = 16363.043747
+Iteration    30: Total loss = 16297.865298
+Iteration    40: Total loss = 16124.537402
+Iteration    40: Total loss = 16124.537402
+
+Fitted physical parameters:
+  mu_r = 0.4827
+  p_b  = 0.4010
+  m0   = 0.000000
+  m1   = 0.8987
+
+  Binding probabilities (p_bind):
+           Unpaired    Paired
+    A        0.3393      0.0000
+    C        0.2037      0.0000
+    G        0.1322      0.1322
+    U        0.0242      0.0242
+
+Convergence:
+  Status: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  Success: True
+
+============================================================
+Phase 2: Fitting soft constraints (lambda_sc)
+============================================================
+
+Iteration     1: Total loss = 15250.713500

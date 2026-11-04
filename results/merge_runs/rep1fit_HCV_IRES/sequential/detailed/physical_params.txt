@@ -1,0 +1,20 @@
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 06:11:05
+System(s): HCV_IRES
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4827  # Chemical potential (kcal/mol)
+p_b     =   0.4010  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8987  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3393      0.0000
+  C        0.2037      0.0000
+  G        0.1322      0.1322
+  U        0.0242      0.0242
+
+[End of parameters summary]

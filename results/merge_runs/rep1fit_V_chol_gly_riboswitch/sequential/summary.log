@@ -1,0 +1,49 @@
+MERGE-RNA Fit Summary
+============================================================
+Date: 2026-11-04 05:17:37
+System(s): V_chol_gly_riboswitch
+Output: results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential
+
+Configuration:
+  Fit mode: sequential
+  DMS mode: True
+  Infer soft constraints: False
+  Max iterations: None
+  Strict convergence: False
+============================================================
+
+
+============================================================
+Phase 1: Fitting physical parameters
+============================================================
+
+Iteration     1: Total loss = 25008.248720
+Iteration    10: Total loss = 16222.847956
+Iteration    15: Total loss = 15807.903896
+
+Fitted physical parameters:
+  mu_r = 0.4469
+  p_b  = 0.1233
+  m0   = 0.000000
+  m1   = 0.8015
+
+  Binding probabilities (p_bind):
+           Unpaired    Paired
+    A        0.3425      0.0000
+    C        0.1713      0.0000
+    G        0.1241      0.1241
+    U        0.0181      0.0181
+
+Convergence:
+  Status: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  Success: True
+
+============================================================
+Phase 2: Fitting soft constraints (lambda_sc)
+============================================================
+
+Iteration     1: Total loss = 10505.101142
+Iteration    10: Total loss = 9077.482591
+Iteration    20: Total loss = 8260.549794
+Iteration    30: Total loss = 7760.269644
+Iteration    40: Total loss = 7544.413025

@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "created": "2026-11-04T05:19:45.155816",
+  "fit_configuration": {
+    "DMS_mode": true,
+    "fit_mode": "sequential",
+    "infer_1D_sc": false,
+    "use_interpolated_ps": false,
+    "fix_physical_params": false,
+    "fix_lambda_sc": false,
+    "strict_convergence": false,
+    "max_iter": null,
+    "mask_edges": [
+      5,
+      5
+    ],
+    "description": null
+  },
+  "output_paths": {
+    "output_dir": "results/merge_runs/rep1fit_hc16/sequential",
+    "output_suffix": "sequential",
+    "root_dir": "results/merge_runs/rep1fit_hc16",
+    "detailed_dir": "results/merge_runs/rep1fit_hc16/sequential/detailed",
+    "plots_dir": "results/merge_runs/rep1fit_hc16/sequential/plots",
+    "params_file": "results/merge_runs/rep1fit_hc16/sequential/params1D.txt",
+    "summary_log": "results/merge_runs/rep1fit_hc16/sequential/summary.log"
+  },
+  "fit_results": {
+    "n_iterations": 34,
+    "converged": true,
+    "convergence_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "total_loss": 15765.253924327119,
+    "current_phase": 1,
+    "losses_per_experiment": {
+      "a04e5a42-6292-4b52-976d-ff4a479cb2e2": 470.19156816830053,
+      "6c5a93eb-b25b-494e-9548-246bcbe1549d": 1056.5589853410288,
+      "0f5de27f-37b6-4a66-b827-3f24bdb7bce6": 3256.3613210056974,
+      "e9263550-cfae-482f-bcdb-fa9416d2017b": 5914.41433507257,
+      "57f0445c-b181-412f-9f98-4bb4d6db2912": 3648.62346049456,
+      "41691a95-8d01-4eeb-8da9-22b305edf05b": 1419.1042542449609
+    }
+  },
+  "systems": [
+    {
+      "name": "hc16",
+      "seq": "AGUAAGAGAAAGAGGAAAGACGGCCAAAUUGCGGGAAAGGGGACAACAGCCGUUCAGUACCAAGUCUCAGGGAAACUUCAGAUGGCCUCGCAAAGGGUAUGGUAAUAAGCUGACGGACAUGGUCCUAACCACGCAGUCAAGUCCUAAGUCAACAGCCUUGGCUGUUGAUAUGGAUGCAUUUCGAUCCAACCGAGGCUCAUUCUUGUAAUUCAUGGCCGUCGGGGAGGCACUUCGGUGCCUCUGAUAACAACUUGAAAUAAGGUUGGCUCAACGGCGCGUGACAGACAAUUCGCGCUGGAACUGCAGUCGGACCUAGGA",
+      "N_seq": 318,
+      "temp_C": 37,
+      "reagent": "DMS",
+      "eps_b_file": "hc16_eps_b.npy",
+      "lambda_sc_file": null,
+      "experiments": [
+        {
+          "conc_mM": 0,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_0mM_r1.csv",
+          "position_mask_file": "hc16_0mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_17mM_r1.csv",
+          "position_mask_file": "hc16_17mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_34mM_r1.csv",
+          "position_mask_file": "hc16_34mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_57mM_r1.csv",
+          "position_mask_file": "hc16_57mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_85mM_r1.csv",
+          "position_mask_file": "hc16_85mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "hc16_8mM_r1.csv",
+          "position_mask_file": "hc16_8mM_r1_mask.npy"
+        }
+      ]
+    }
+  ]
+}

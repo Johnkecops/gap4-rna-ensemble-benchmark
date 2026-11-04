@@ -1,10 +1,9 @@
-data/raw/*
-!data/raw/MANIFEST.tsv
-!data/raw/excluded_large_libraries.txt
-data/processed/*.gz
+# public clones (commits pinned in environments/tool_commits.tsv)
+data/raw/EternaBench/
+data/raw/rmdb_repo/
+data/raw/merge_rna
 tools/
-results/ensembles/
-results/merge_runs/
+# Nextflow / Python scratch
 work/
 .nextflow*
 .nextflow_home/

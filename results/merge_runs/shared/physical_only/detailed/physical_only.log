@@ -1,0 +1,96 @@
+Date: 2026-11-04 05:13:52
+ViennaRNA version: 2.7.2
+Description: None
+Output suffix: physical_only
+
+System: bact_RNaseP_typeA
+  Training Experiments: ['bact_RNaseP_typeA 0mM r1', 'bact_RNaseP_typeA 17mM r1', 'bact_RNaseP_typeA 34mM r1', 'bact_RNaseP_typeA 57mM r1', 'bact_RNaseP_typeA 85mM r1', 'bact_RNaseP_typeA 8mM r1', 'bact_RNaseP_typeA 0mM r2', 'bact_RNaseP_typeA 17mM r2', 'bact_RNaseP_typeA 34mM r2', 'bact_RNaseP_typeA 57mM r2', 'bact_RNaseP_typeA 85mM r2', 'bact_RNaseP_typeA 8mM r2']
+System: tetrahymena_ribozyme
+  Training Experiments: ['tetrahymena_ribozyme 0mM r1', 'tetrahymena_ribozyme 17mM r1', 'tetrahymena_ribozyme 34mM r1', 'tetrahymena_ribozyme 57mM r1', 'tetrahymena_ribozyme 85mM r1', 'tetrahymena_ribozyme 8mM r1', 'tetrahymena_ribozyme 0mM r2', 'tetrahymena_ribozyme 17mM r2', 'tetrahymena_ribozyme 34mM r2', 'tetrahymena_ribozyme 57mM r2', 'tetrahymena_ribozyme 85mM r2', 'tetrahymena_ribozyme 8mM r2']
+
+--- Fit Parameters ---
+DMS mode: True
+Infer 1D soft constraints: False
+Fix physical params: False
+Fix lambda_sc: True
+Use interpolated pairing probabilities: False
+Initial guess: None
+Max iterations: None
+Strict convergence: False
+Custom mask: None
+
+--- Execution Settings ---
+Root directory: results/merge_runs/shared
+Output directory: results/merge_runs/shared/physical_only
+Log file path: results/merge_runs/shared/physical_only/detailed/physical_only.log
+Overwrite: True
+Debug mode: False
+Check gradient: False
+Do plots: False
+Print to stdout: False
+
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Initial guess:
+[0.1 0.1 0.1 0.1 0.1 0.1 0.  0.1]
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Bounds:
+[(-5, 5), (0, 10), (1e-06, 1), (1e-06, 1), (1e-06, 1), (1e-06, 1), (0, 0), (0.1, 10)]
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Lambda_sc parameters are FIXED (not being optimized)
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Callback n.1 at 2026-11-04 05:14:14 with losses: {'4b3d7672-1a71-4bb2-9552-086715d2d5cc': np.float64(602.475521066765), '1fbdb56b-1fde-4e9e-b4ee-24f06f864675': np.float64(1055.2341073738594), '26e6514d-57ab-49e8-b4e4-411a39528e62': np.float64(6256.009817783915), '6b080f59-5671-47b2-adc4-82e8a3b3e44f': np.float64(7830.213579485446), '51fb1731-44ab-42de-9bb1-03263b6df9e0': np.float64(10097.209137960432), '58928ab9-550e-45cc-866d-c3b016d58f9c': np.float64(1583.4386588947532), '9901315f-cc0e-4495-ac29-7c90f73df70f': np.float64(520.388200544705), 'd2152610-f3d1-4428-a62b-9c24e6c95d7c': np.float64(1514.7036793213838), '95fbe936-10e5-41a7-835e-fb717b5023ba': np.float64(3788.979617307706), '8a35060f-a3fb-47f4-bb21-a2e7c61ea5f1': np.float64(6511.303162296574), '14eacc6d-f37e-4ad6-a9c8-b2f86d2404dc': np.float64(6137.581046728324), '819d9213-4c5d-4856-9800-a4f00e3ae998': np.float64(1468.212280349967), '6d6c1169-b500-437d-9f81-fd8f7869de22': np.float64(701.3683277161344), '0e7224a1-f157-4a31-b05c-13f00a8a6424': np.float64(1306.607170656372), 'bc507454-5831-428d-aa85-d31de62dbe87': np.float64(5240.494309448442), 'beb76b14-3d84-4a00-8d2c-7c9a5d9d3fbb': np.float64(14564.141253689362), 'bf3bf81b-dc98-473e-b248-12fcf5e8f043': np.float64(15577.444715728732), '86aaca19-ddbb-4f0d-b7db-603514eee708': np.float64(1186.584038328891), '799743ec-08e3-4bf5-9625-0471edbbd750': np.float64(500.9102076707476), '52a3f4c6-fc35-4752-9e4c-805bd6e7181b': np.float64(1562.177877245263), '96f4a29d-f01e-4383-a781-fc7956fcd630': np.float64(3137.4668202306384), '8fde8e74-0805-4be6-b441-7a7c140a25b7': np.float64(6340.359076033123), 'fbc6817a-d0a6-4d4e-a2d9-b516b39267ea': np.float64(6234.403139620272), 'f4ecd278-8846-4483-8fcd-32fe6b40f8f5': np.float64(1582.0622616775913)}
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:14:14
+System(s): bact_RNaseP_typeA, tetrahymena_ribozyme
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4290  # Chemical potential (kcal/mol)
+p_b     =   0.0933  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.7646  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.1604      0.0000
+  C        0.1604      0.0000
+  G        0.1604      0.1604
+  U        0.1604      0.1604
+
+[End of parameters summary]
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Fit result:
+   message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  success: True
+   status: 0
+      fun: 70695.81978152586
+        x: [ 4.112e-01  2.269e-01  3.492e-01  1.989e-01  9.836e-02
+             1.820e-02  0.000e+00  8.052e-01]
+      nit: 24
+      jac: [-4.882e+03  5.294e+02  3.676e+03 -6.744e+03 -2.978e+04
+             1.143e+04 -3.453e+08 -2.246e+03]
+     nfev: 82
+     njev: 82
+ hess_inv: <8x8 LbfgsInvHessProduct with dtype=float64>
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Finished fitting process of bact_RNaseP_typeA, 2026-11-04 05:21:22.396494
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Callback n.24 at 2026-11-04 05:21:22 with losses: {'4b3d7672-1a71-4bb2-9552-086715d2d5cc': np.float64(602.475521066765), '1fbdb56b-1fde-4e9e-b4ee-24f06f864675': np.float64(978.6674653226879), '26e6514d-57ab-49e8-b4e4-411a39528e62': np.float64(3442.9136305127986), '6b080f59-5671-47b2-adc4-82e8a3b3e44f': np.float64(5737.447070986218), '51fb1731-44ab-42de-9bb1-03263b6df9e0': np.float64(6014.616056532903), '58928ab9-550e-45cc-866d-c3b016d58f9c': np.float64(1548.176869621793), '9901315f-cc0e-4495-ac29-7c90f73df70f': np.float64(520.388200544705), 'd2152610-f3d1-4428-a62b-9c24e6c95d7c': np.float64(1423.9086871361865), '95fbe936-10e5-41a7-835e-fb717b5023ba': np.float64(2160.4976370531695), '8a35060f-a3fb-47f4-bb21-a2e7c61ea5f1': np.float64(4888.128215192675), '14eacc6d-f37e-4ad6-a9c8-b2f86d2404dc': np.float64(3421.721298085765), '819d9213-4c5d-4856-9800-a4f00e3ae998': np.float64(1421.6336080714934), '6d6c1169-b500-437d-9f81-fd8f7869de22': np.float64(701.3683277161344), '0e7224a1-f157-4a31-b05c-13f00a8a6424': np.float64(1265.688118776362), 'bc507454-5831-428d-aa85-d31de62dbe87': np.float64(3658.428727411756), 'beb76b14-3d84-4a00-8d2c-7c9a5d9d3fbb': np.float64(9066.504955886554), 'bf3bf81b-dc98-473e-b248-12fcf5e8f043': np.float64(8439.449652723273), '86aaca19-ddbb-4f0d-b7db-603514eee708': np.float64(1283.648172249148), '799743ec-08e3-4bf5-9625-0471edbbd750': np.float64(500.9102076707476), '52a3f4c6-fc35-4752-9e4c-805bd6e7181b': np.float64(1499.6025373719253), '96f4a29d-f01e-4383-a781-fc7956fcd630': np.float64(2203.9219310230965), '8fde8e74-0805-4be6-b441-7a7c140a25b7': np.float64(4010.8695527111154), 'fbc6817a-d0a6-4d4e-a2d9-b516b39267ea': np.float64(4337.903000195234), 'f4ecd278-8846-4483-8fcd-32fe6b40f8f5': np.float64(1566.9503376633702)}
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:21:22
+System(s): bact_RNaseP_typeA, tetrahymena_ribozyme
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4112  # Chemical potential (kcal/mol)
+p_b     =   0.2269  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8052  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3492      0.0000
+  C        0.1989      0.0000
+  G        0.0984      0.0984
+  U        0.0182      0.0182
+
+[End of parameters summary]
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Fit metadata saved to results/merge_runs/shared/physical_only/detailed/fit_metadata.json
+results/merge_runs/shared/physical_only/detailed/physical_only.log[INFO] Execution finished in 0:07:29.662991

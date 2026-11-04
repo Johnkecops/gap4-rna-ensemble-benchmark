@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "created": "2026-11-04T05:18:05.991416",
+  "fit_configuration": {
+    "DMS_mode": true,
+    "fit_mode": "sequential",
+    "infer_1D_sc": false,
+    "use_interpolated_ps": false,
+    "fix_physical_params": false,
+    "fix_lambda_sc": false,
+    "strict_convergence": false,
+    "max_iter": null,
+    "mask_edges": [
+      5,
+      5
+    ],
+    "description": null
+  },
+  "output_paths": {
+    "output_dir": "results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential",
+    "output_suffix": "sequential",
+    "root_dir": "results/merge_runs/rep1fit_V_chol_gly_riboswitch",
+    "detailed_dir": "results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed",
+    "plots_dir": "results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/plots",
+    "params_file": "results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/params1D.txt",
+    "summary_log": "results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/summary.log"
+  },
+  "fit_results": {
+    "n_iterations": 15,
+    "converged": true,
+    "convergence_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "total_loss": 15807.90389554518,
+    "current_phase": 1,
+    "losses_per_experiment": {
+      "f619cad2-71dd-49c5-b854-510a8fc256d8": 312.6226440818639,
+      "f061ac86-d7ed-415a-a1fa-d5c64020e351": 703.2897925274701,
+      "6fc21f5e-bd35-44a6-a640-59f96cc08619": 2438.6503734253233,
+      "29126862-42ec-46a5-9839-1444ad1ad2cc": 5013.060571250204,
+      "36da4f48-586f-4d4b-bce3-891b6c25e49e": 6414.277266521494,
+      "16914345-2dcd-4c1d-84e0-0c539b705ffb": 926.0032477388224
+    }
+  },
+  "systems": [
+    {
+      "name": "V_chol_gly_riboswitch",
+      "seq": "AGAGUGGUUGUUAACCAGAUUUUAACAUCUGAGCCAAAUAACCCGCCGAAGAAGUAAAUCUUUCAGGUGCAUUAUUCUUAGCCAUAUAUUGGCAACGAAUAAGCGAGGACUGUAGUUGGAGGAACCUCUGGAGAGAACCGUUUAAUCGGUCGCCGAAGGAGCAAGCUCUGCGCAUAUGCAGAGUGAAACUCUCAGGCAAAAGGACAGAGGAAGGA",
+      "N_seq": 215,
+      "temp_C": 37,
+      "reagent": "DMS",
+      "eps_b_file": "V_chol_gly_riboswitch_eps_b.npy",
+      "lambda_sc_file": null,
+      "experiments": [
+        {
+          "conc_mM": 0,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_0mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_0mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_17mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_17mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_34mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_34mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_57mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_57mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_85mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_85mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "V_chol_gly_riboswitch_8mM_r1.csv",
+          "position_mask_file": "V_chol_gly_riboswitch_8mM_r1_mask.npy"
+        }
+      ]
+    }
+  ]
+}

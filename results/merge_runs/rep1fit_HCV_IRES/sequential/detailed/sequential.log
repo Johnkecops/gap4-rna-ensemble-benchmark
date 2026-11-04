@@ -1,0 +1,184 @@
+Date: 2026-11-04 05:17:37
+ViennaRNA version: 2.7.2
+Description: None
+Output suffix: sequential
+
+System: HCV_IRES
+  Training Experiments: ['HCV_IRES 0mM r1', 'HCV_IRES 17mM r1', 'HCV_IRES 34mM r1', 'HCV_IRES 57mM r1', 'HCV_IRES 85mM r1', 'HCV_IRES 8mM r1']
+
+--- Fit Parameters ---
+DMS mode: True
+Infer 1D soft constraints: False
+Fix physical params: False
+Fix lambda_sc: False
+Use interpolated pairing probabilities: False
+Initial guess: None
+Max iterations: None
+Strict convergence: False
+Custom mask: None
+
+--- Execution Settings ---
+Root directory: results/merge_runs/rep1fit_HCV_IRES
+Output directory: results/merge_runs/rep1fit_HCV_IRES/sequential
+Log file path: results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log
+Overwrite: True
+Debug mode: False
+Check gradient: False
+Do plots: False
+Print to stdout: False
+
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] SEQUENTIAL FITTING MODE
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Phase 1: Fitting physical parameters only (no lambda_sc)
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Initial guess:
+[0.1 0.1 0.1 0.1 0.1 0.1 0.  0.1]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Bounds:
+[(-5, 5), (0, 10), (1e-06, 1), (1e-06, 1), (1e-06, 1), (1e-06, 1), (0, 0), (0.1, 10)]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Callback n.1 at 2026-11-04 05:17:48 with losses: {'18143d12-93a8-4c44-ae76-6daeebea2295': np.float64(581.8377107614533), 'b24b4e44-3486-4ab4-a23f-efab7f6d7c85': np.float64(926.5396722155677), '7dfd755a-05d7-4b36-9c92-ecc611dae6a1': np.float64(3233.9588119878126), 'b4e698eb-24eb-4b6d-926d-4208277b86b8': np.float64(8686.90858285625), '174c5e4f-390f-4063-865d-adca82a236d5': np.float64(8192.356908257821), 'de47e814-b3fc-4c5d-a51a-d58b228aa743': np.float64(1338.713587905034)}
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:17:48
+System(s): HCV_IRES
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.3849  # Chemical potential (kcal/mol)
+p_b     =   0.0942  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.6757  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.1523      0.0000
+  C        0.1523      0.0000
+  G        0.1523      0.1523
+  U        0.1523      0.1523
+
+[End of parameters summary]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Fit result:
+   message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  success: True
+   status: 0
+      fun: 16124.537402127253
+        x: [ 4.827e-01  4.010e-01  3.393e-01  2.037e-01  1.322e-01
+             2.422e-02  0.000e+00  8.987e-01]
+      nit: 40
+      jac: [-1.801e+03 -9.928e+02  4.808e+02  1.384e+03 -4.873e+03
+             3.612e+03 -3.957e+06 -7.655e+01]
+     nfev: 110
+     njev: 110
+ hess_inv: <8x8 LbfgsInvHessProduct with dtype=float64>
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Finished fitting process of HCV_IRES (Phase 1 (physical params)), 2026-11-04 05:22:17.679998
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Callback n.40 at 2026-11-04 05:22:17 with losses: {'18143d12-93a8-4c44-ae76-6daeebea2295': np.float64(581.8377107614533), 'b24b4e44-3486-4ab4-a23f-efab7f6d7c85': np.float64(1032.1034214336632), '7dfd755a-05d7-4b36-9c92-ecc611dae6a1': np.float64(2683.85602757614), 'b4e698eb-24eb-4b6d-926d-4208277b86b8': np.float64(5675.797539998128), '174c5e4f-390f-4063-865d-adca82a236d5': np.float64(4698.314871815455), 'de47e814-b3fc-4c5d-a51a-d58b228aa743': np.float64(1452.6278305424137)}
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:22:17
+System(s): HCV_IRES
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4827  # Chemical potential (kcal/mol)
+p_b     =   0.4010  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8987  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3393      0.0000
+  C        0.2037      0.0000
+  G        0.1322      0.1322
+  U        0.0242      0.0242
+
+[End of parameters summary]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Fit metadata saved to results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/fit_metadata.json
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Execution finished in 0:04:39.748094
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] 
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Phase 2: Fitting soft constraints (lambda_sc) with fixed physical params
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Initial guess:
+[0.48270592 0.40104731 0.33930841 0.20367167 0.13216378 0.02421987
+ 0.         0.89867378 0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.        ]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Bounds:
+[(-5, 5), (0, 10), (1e-06, 1), (1e-06, 1), (1e-06, 1), (1e-06, 1), (0, 0), (0.1, 10), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1)]
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Physical parameters are FIXED (not being optimized)
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] Callback n.1 at 2026-11-04 06:11:05 with losses: {'18143d12-93a8-4c44-ae76-6daeebea2295': np.float64(581.8377107614533), 'b24b4e44-3486-4ab4-a23f-efab7f6d7c85': np.float64(1027.0144651846945), '7dfd755a-05d7-4b36-9c92-ecc611dae6a1': np.float64(2606.8272177906256), 'b4e698eb-24eb-4b6d-926d-4208277b86b8': np.float64(5243.848259993314), '174c5e4f-390f-4063-865d-adca82a236d5': np.float64(4343.483045230656), 'de47e814-b3fc-4c5d-a51a-d58b228aa743': np.float64(1447.7028012778396)}
+results/merge_runs/rep1fit_HCV_IRES/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 06:11:05
+System(s): HCV_IRES
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4827  # Chemical potential (kcal/mol)
+p_b     =   0.4010  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8987  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3393      0.0000
+  C        0.2037      0.0000
+  G        0.1322      0.1322
+  U        0.0242      0.0242
+
+[End of parameters summary]

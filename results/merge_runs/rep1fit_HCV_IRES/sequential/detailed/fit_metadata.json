@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "created": "2026-11-04T05:22:17.681638",
+  "fit_configuration": {
+    "DMS_mode": true,
+    "fit_mode": "sequential",
+    "infer_1D_sc": false,
+    "use_interpolated_ps": false,
+    "fix_physical_params": false,
+    "fix_lambda_sc": false,
+    "strict_convergence": false,
+    "max_iter": null,
+    "mask_edges": [
+      5,
+      5
+    ],
+    "description": null
+  },
+  "output_paths": {
+    "output_dir": "results/merge_runs/rep1fit_HCV_IRES/sequential",
+    "output_suffix": "sequential",
+    "root_dir": "results/merge_runs/rep1fit_HCV_IRES",
+    "detailed_dir": "results/merge_runs/rep1fit_HCV_IRES/sequential/detailed",
+    "plots_dir": "results/merge_runs/rep1fit_HCV_IRES/sequential/plots",
+    "params_file": "results/merge_runs/rep1fit_HCV_IRES/sequential/params1D.txt",
+    "summary_log": "results/merge_runs/rep1fit_HCV_IRES/sequential/summary.log"
+  },
+  "fit_results": {
+    "n_iterations": 40,
+    "converged": true,
+    "convergence_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "total_loss": 16124.537402127253,
+    "current_phase": 1,
+    "losses_per_experiment": {
+      "18143d12-93a8-4c44-ae76-6daeebea2295": 581.8377107614533,
+      "b24b4e44-3486-4ab4-a23f-efab7f6d7c85": 1032.1034214336632,
+      "7dfd755a-05d7-4b36-9c92-ecc611dae6a1": 2683.85602757614,
+      "b4e698eb-24eb-4b6d-926d-4208277b86b8": 5675.797539998128,
+      "174c5e4f-390f-4063-865d-adca82a236d5": 4698.314871815455,
+      "de47e814-b3fc-4c5d-a51a-d58b228aa743": 1452.6278305424137
+    }
+  },
+  "systems": [
+    {
+      "name": "HCV_IRES",
+      "seq": "GGGCGACACUCCACCAUAGAUCACUCCCCUGUGAGGAACUACUGUCUUCACGCAGAAAGCGUCUAGCCAUGGCGUUAGUAUGAGUGUCGUGCAGCCUCCAGGCCCCCCCCUCCCGGGAGAGCCAUAGUGGUCUGCGGAACCGGUGAGUACACCGGAAUUGCCAGGACGACCGGGUCCUUUCUUGGAUCAAUCCCGCUCAAUGCCUGGAGAUUUGGGCGUGCCCCCGCGAGACUGCUAGCCGAGUAGUGUUGGGUCGCGAAAGGCCUUGUGGUACUGCCUGAUAGGGUGCUUGCGAGUGCCCCGGGAGGUCUCGUAGACCGUGCACCCAGGAA",
+      "N_seq": 332,
+      "temp_C": 37,
+      "reagent": "DMS",
+      "eps_b_file": "HCV_IRES_eps_b.npy",
+      "lambda_sc_file": null,
+      "experiments": [
+        {
+          "conc_mM": 0,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_0mM_r1.csv",
+          "position_mask_file": "HCV_IRES_0mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_17mM_r1.csv",
+          "position_mask_file": "HCV_IRES_17mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_34mM_r1.csv",
+          "position_mask_file": "HCV_IRES_34mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_57mM_r1.csv",
+          "position_mask_file": "HCV_IRES_57mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_85mM_r1.csv",
+          "position_mask_file": "HCV_IRES_85mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "HCV_IRES_8mM_r1.csv",
+          "position_mask_file": "HCV_IRES_8mM_r1_mask.npy"
+        }
+      ]
+    }
+  ]
+}

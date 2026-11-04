@@ -1,0 +1,32 @@
+MERGE-RNA Fit Summary
+============================================================
+Date: 2026-11-04 05:13:52
+System(s): bact_RNaseP_typeA, tetrahymena_ribozyme
+Output: results/merge_runs/shared/physical_only
+
+Configuration:
+  Fit mode: physical_only
+  DMS mode: True
+  Infer soft constraints: False
+  Max iterations: None
+  Strict convergence: False
+============================================================
+
+Iteration     1: Total loss = 105299.768007
+Iteration    10: Total loss = 104211.926504
+Iteration    20: Total loss = 70921.993066
+Iteration    24: Total loss = 70695.819782
+
+============================================================
+Final Parameters:
+  mu_r = 0.4112
+  p_b  = 0.2269
+  m0   = 0.000000
+  m1   = 0.8052
+
+Convergence:
+  Status: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  Success: True
+  Total iterations: 24
+  Final total loss: 70695.819782
+============================================================

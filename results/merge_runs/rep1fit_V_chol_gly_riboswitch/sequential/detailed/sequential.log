@@ -1,0 +1,165 @@
+Date: 2026-11-04 05:17:37
+ViennaRNA version: 2.7.2
+Description: None
+Output suffix: sequential
+
+System: V_chol_gly_riboswitch
+  Training Experiments: ['V_chol_gly_riboswitch 0mM r1', 'V_chol_gly_riboswitch 17mM r1', 'V_chol_gly_riboswitch 34mM r1', 'V_chol_gly_riboswitch 57mM r1', 'V_chol_gly_riboswitch 85mM r1', 'V_chol_gly_riboswitch 8mM r1']
+
+--- Fit Parameters ---
+DMS mode: True
+Infer 1D soft constraints: False
+Fix physical params: False
+Fix lambda_sc: False
+Use interpolated pairing probabilities: False
+Initial guess: None
+Max iterations: None
+Strict convergence: False
+Custom mask: None
+
+--- Execution Settings ---
+Root directory: results/merge_runs/rep1fit_V_chol_gly_riboswitch
+Output directory: results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential
+Log file path: results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log
+Overwrite: True
+Debug mode: False
+Check gradient: False
+Do plots: False
+Print to stdout: False
+
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] SEQUENTIAL FITTING MODE
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Phase 1: Fitting physical parameters only (no lambda_sc)
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Initial guess:
+[0.1 0.1 0.1 0.1 0.1 0.1 0.  0.1]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Bounds:
+[(-5, 5), (0, 10), (1e-06, 1), (1e-06, 1), (1e-06, 1), (1e-06, 1), (0, 0), (0.1, 10)]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Callback n.1 at 2026-11-04 05:17:41 with losses: {'f619cad2-71dd-49c5-b854-510a8fc256d8': np.float64(312.6226440818639), 'f061ac86-d7ed-415a-a1fa-d5c64020e351': np.float64(808.8693655687061), '6fc21f5e-bd35-44a6-a640-59f96cc08619': np.float64(4097.0361121820715), '29126862-42ec-46a5-9839-1444ad1ad2cc': np.float64(7407.335370003793), '36da4f48-586f-4d4b-bce3-891b6c25e49e': np.float64(11416.919460565978), '16914345-2dcd-4c1d-84e0-0c539b705ffb': np.float64(965.4657680830899)}
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:17:41
+System(s): V_chol_gly_riboswitch
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.5022  # Chemical potential (kcal/mol)
+p_b     =   0.0918  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.9125  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.1739      0.0000
+  C        0.1739      0.0000
+  G        0.1739      0.1739
+  U        0.1739      0.1739
+
+[End of parameters summary]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Fit result:
+   message: CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+  success: True
+   status: 0
+      fun: 15807.90389554518
+        x: [ 4.469e-01  1.233e-01  3.425e-01  1.713e-01  1.241e-01
+             1.807e-02  0.000e+00  8.015e-01]
+      nit: 15
+      jac: [-5.672e+01 -5.596e+02  9.573e+02 -1.062e+03 -1.435e+03
+             1.544e+03 -8.053e+06 -3.545e+00]
+     nfev: 32
+     njev: 32
+ hess_inv: <8x8 LbfgsInvHessProduct with dtype=float64>
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Finished fitting process of V_chol_gly_riboswitch (Phase 1 (physical params)), 2026-11-04 05:18:05.990627
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Callback n.15 at 2026-11-04 05:18:05 with losses: {'f619cad2-71dd-49c5-b854-510a8fc256d8': np.float64(312.6226440818639), 'f061ac86-d7ed-415a-a1fa-d5c64020e351': np.float64(703.2897925274701), '6fc21f5e-bd35-44a6-a640-59f96cc08619': np.float64(2438.6503734253233), '29126862-42ec-46a5-9839-1444ad1ad2cc': np.float64(5013.060571250204), '36da4f48-586f-4d4b-bce3-891b6c25e49e': np.float64(6414.277266521494), '16914345-2dcd-4c1d-84e0-0c539b705ffb': np.float64(926.0032477388224)}
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:18:05
+System(s): V_chol_gly_riboswitch
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4469  # Chemical potential (kcal/mol)
+p_b     =   0.1233  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8015  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3425      0.0000
+  C        0.1713      0.0000
+  G        0.1241      0.1241
+  U        0.0181      0.0181
+
+[End of parameters summary]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Fit metadata saved to results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/fit_metadata.json
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Execution finished in 0:00:28.080052
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] 
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Phase 2: Fitting soft constraints (lambda_sc) with fixed physical params
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] ============================================================
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Initial guess:
+[0.44693315 0.12327531 0.34252816 0.17134829 0.12414563 0.01807044
+ 0.         0.80151354 0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Bounds:
+[(-5, 5), (0, 10), (1e-06, 1), (1e-06, 1), (1e-06, 1), (1e-06, 1), (0, 0), (0.1, 10), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1), (-1, 1)]
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Physical parameters are FIXED (not being optimized)
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] Callback n.1 at 2026-11-04 05:26:08 with losses: {'f619cad2-71dd-49c5-b854-510a8fc256d8': np.float64(312.6226440818639), 'f061ac86-d7ed-415a-a1fa-d5c64020e351': np.float64(684.3577590142135), '6fc21f5e-bd35-44a6-a640-59f96cc08619': np.float64(2374.495423753999), '29126862-42ec-46a5-9839-1444ad1ad2cc': np.float64(2945.430187695085), '36da4f48-586f-4d4b-bce3-891b6c25e49e': np.float64(3328.8038272916274), '16914345-2dcd-4c1d-84e0-0c539b705ffb': np.float64(859.3912999287445)}
+results/merge_runs/rep1fit_V_chol_gly_riboswitch/sequential/detailed/sequential.log[INFO] 
+==================================================
+MERGE-RNA Fitted Parameters
+Date: 2026-11-04 05:26:08
+System(s): V_chol_gly_riboswitch
+==================================================
+
+--- Physical Parameters ---
+mu_r    =   0.4469  # Chemical potential (kcal/mol)
+p_b     =   0.1233  # Penalty for paired bases (kcal/mol)
+m0      = 0.000000  # Governs false positive mutations
+m1      =   0.8015  # Governs false negative mutations
+
+--- Binding Probabilities (p_bind) ---
+         Unpaired    Paired
+  A        0.3425      0.0000
+  C        0.1713      0.0000
+  G        0.1241      0.1241
+  U        0.0181      0.0181
+
+[End of parameters summary]

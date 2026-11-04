@@ -1,0 +1,277 @@
+{
+  "version": "1.0",
+  "created": "2026-11-04T05:21:22.397967",
+  "fit_configuration": {
+    "DMS_mode": true,
+    "fit_mode": "physical_only",
+    "infer_1D_sc": false,
+    "use_interpolated_ps": false,
+    "fix_physical_params": false,
+    "fix_lambda_sc": true,
+    "strict_convergence": false,
+    "max_iter": null,
+    "mask_edges": [
+      5,
+      5
+    ],
+    "description": null
+  },
+  "output_paths": {
+    "output_dir": "results/merge_runs/shared/physical_only",
+    "output_suffix": "physical_only",
+    "root_dir": "results/merge_runs/shared",
+    "detailed_dir": "results/merge_runs/shared/physical_only/detailed",
+    "plots_dir": "results/merge_runs/shared/physical_only/plots",
+    "params_file": "results/merge_runs/shared/physical_only/params1D.txt",
+    "summary_log": "results/merge_runs/shared/physical_only/summary.log"
+  },
+  "fit_results": {
+    "n_iterations": 24,
+    "converged": true,
+    "convergence_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "total_loss": 70695.81978152586,
+    "current_phase": null,
+    "losses_per_experiment": {
+      "4b3d7672-1a71-4bb2-9552-086715d2d5cc": 602.475521066765,
+      "1fbdb56b-1fde-4e9e-b4ee-24f06f864675": 978.6674653226879,
+      "26e6514d-57ab-49e8-b4e4-411a39528e62": 3442.9136305127986,
+      "6b080f59-5671-47b2-adc4-82e8a3b3e44f": 5737.447070986218,
+      "51fb1731-44ab-42de-9bb1-03263b6df9e0": 6014.616056532903,
+      "58928ab9-550e-45cc-866d-c3b016d58f9c": 1548.176869621793,
+      "9901315f-cc0e-4495-ac29-7c90f73df70f": 520.388200544705,
+      "d2152610-f3d1-4428-a62b-9c24e6c95d7c": 1423.9086871361865,
+      "95fbe936-10e5-41a7-835e-fb717b5023ba": 2160.4976370531695,
+      "8a35060f-a3fb-47f4-bb21-a2e7c61ea5f1": 4888.128215192675,
+      "14eacc6d-f37e-4ad6-a9c8-b2f86d2404dc": 3421.721298085765,
+      "819d9213-4c5d-4856-9800-a4f00e3ae998": 1421.6336080714934,
+      "6d6c1169-b500-437d-9f81-fd8f7869de22": 701.3683277161344,
+      "0e7224a1-f157-4a31-b05c-13f00a8a6424": 1265.688118776362,
+      "bc507454-5831-428d-aa85-d31de62dbe87": 3658.428727411756,
+      "beb76b14-3d84-4a00-8d2c-7c9a5d9d3fbb": 9066.504955886554,
+      "bf3bf81b-dc98-473e-b248-12fcf5e8f043": 8439.449652723273,
+      "86aaca19-ddbb-4f0d-b7db-603514eee708": 1283.648172249148,
+      "799743ec-08e3-4bf5-9625-0471edbbd750": 500.9102076707476,
+      "52a3f4c6-fc35-4752-9e4c-805bd6e7181b": 1499.6025373719253,
+      "96f4a29d-f01e-4383-a781-fc7956fcd630": 2203.9219310230965,
+      "8fde8e74-0805-4be6-b441-7a7c140a25b7": 4010.8695527111154,
+      "fbc6817a-d0a6-4d4e-a2d9-b516b39267ea": 4337.903000195234,
+      "f4ecd278-8846-4483-8fcd-32fe6b40f8f5": 1566.9503376633702
+    }
+  },
+  "systems": [
+    {
+      "name": "bact_RNaseP_typeA",
+      "seq": "GCGGGGGCGCACACCUGCGCUUCCCGAGGAAAGUCCGGACUCUGGAGCGGGGUGCCGGGUAACGCCCGGGAGGGGUGACCCUCGGACAGGGCCAUAGAGAAGAAGACCGCCCGUUGAGGGCAAGGGUGGAACGGUGGGGUAAGAGCCCACCAGCGUCGGGGCAACCCGGCGGCUUGGCAACCCCCACCUGGAGCAAGGCCAAGCAGGGGGUUGGGUCGCUCCCCCUAUUCCCCCGGGUUGGCCGCUUGAGGUGUGCGGUAACGCACACCCCAGAUUGAUGACCGCCCACGACAGAAUCCGGCUUAUGCUCCUCUCCCGUGAGGA",
+      "N_seq": 324,
+      "temp_C": 37,
+      "reagent": "DMS",
+      "eps_b_file": "bact_RNaseP_typeA_eps_b.npy",
+      "lambda_sc_file": null,
+      "experiments": [
+        {
+          "conc_mM": 0,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_0mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_0mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_17mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_17mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_34mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_34mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_57mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_57mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_85mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_85mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_8mM_r1.csv",
+          "position_mask_file": "bact_RNaseP_typeA_8mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 0,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_0mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_0mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_17mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_17mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_34mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_34mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_57mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_57mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_85mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_85mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "bact_RNaseP_typeA_8mM_r2.csv",
+          "position_mask_file": "bact_RNaseP_typeA_8mM_r2_mask.npy"
+        }
+      ]
+    },
+    {
+      "name": "tetrahymena_ribozyme",
+      "seq": "CACCUGGUAGCUAGUCUUUAAACCAAUAGAUUGCAUCGGUUUAAAAGGCAAGACCGUCAAAUUGCGGGAAAGGGGUCAACAGCCGUUCAGUACCAAGUCUCAGGGGAAACUUUGAGAUGGCCUUGCAAAGGGUAUGGUAAUAAGCUGACGGACAUGGUCCUAACCACGCAGCCAAGUCCUAAGUCAACAGAUCUUCUGUUGAUAUGGAUGCAGUUCACAGACUAAAUGUCGGUCGGGGAAGAUGUAUUCUUCUCAUAAGAUAUAGUCGGACCUCUCCUUAAUGGGAGCUAGCGGAUGAAGUGAUGCAACACUGGAGCCGCUGGGAACUAAUUUGUAUGCGAAAGUAUAUUGAUUAGUUUUGGAGUAGGA",
+      "N_seq": 369,
+      "temp_C": 37,
+      "reagent": "DMS",
+      "eps_b_file": "tetrahymena_ribozyme_eps_b.npy",
+      "lambda_sc_file": null,
+      "experiments": [
+        {
+          "conc_mM": 0,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_0mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_0mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_17mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_17mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_34mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_34mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_57mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_57mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_85mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_85mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 1,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_8mM_r1.csv",
+          "position_mask_file": "tetrahymena_ribozyme_8mM_r1_mask.npy"
+        },
+        {
+          "conc_mM": 0,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_0mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_0mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 17,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_17mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_17mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 34,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_34mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_34mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 57,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_57mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_57mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 85,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_85mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_85mM_r2_mask.npy"
+        },
+        {
+          "conc_mM": 8,
+          "rep_number": 2,
+          "is_training": true,
+          "is_synthetic": false,
+          "data_file": "tetrahymena_ribozyme_8mM_r2.csv",
+          "position_mask_file": "tetrahymena_ribozyme_8mM_r2_mask.npy"
+        }
+      ]
+    }
+  ]
+}
