@@ -1,0 +1,7 @@
+Starting fitting process of bact_RNaseP_typeA, 2026-11-04 05:13:52.790341
+Finished fitting process of bact_RNaseP_typeA, 2026-11-04 05:21:22.396494
+Traceback (most recent call last):
+  File "/home/user/gap4/scripts/merge_fit.py", line 47, in <module>
+    pr = m.pack_params(res.x, list(m.systems.values())[0])
+                                   ^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'values'

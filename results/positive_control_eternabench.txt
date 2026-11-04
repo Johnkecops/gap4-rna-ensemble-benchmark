@@ -1,0 +1,1 @@
+constructs=1088 nucleotides=79439 pearson_ours=0.6730 published_vienna_2=0.6729 diff=+0.0001

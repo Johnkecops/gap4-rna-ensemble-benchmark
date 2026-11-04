@@ -1,0 +1,11 @@
+data/raw/*
+!data/raw/MANIFEST.tsv
+!data/raw/excluded_large_libraries.txt
+data/processed/*.gz
+tools/
+results/ensembles/
+results/merge_runs/
+work/
+.nextflow*
+.nextflow_home/
+__pycache__/

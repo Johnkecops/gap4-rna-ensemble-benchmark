@@ -1,0 +1,28 @@
+{
+  "_note": "All thresholds fixed before scoring (doc: Checks before first full run).",
+  "min_snr": 1.0,
+  "min_coverage": 1000,
+  "end_mask_nt": 5,
+  "cdhit_identity": 0.8,
+  "cdhit_word": 5,
+  "fit_fraction": 0.5,
+  "split_seed": 42,
+  "length_strata": [
+    200,
+    1000,
+    3000
+  ],
+  "bpp_cutoff": 0.0001,
+  "beams": [
+    100,
+    200,
+    500,
+    0
+  ],
+  "n_samples": 1000,
+  "reactive_quantile": 0.75,
+  "bootstrap": 1000,
+  "exact_max_len": 4000,
+  "jsd_max_len": 150,
+  "mad_tolerance": 0.05
+}

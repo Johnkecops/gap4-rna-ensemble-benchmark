@@ -1,0 +1,9 @@
+tool	n	p95_mad_unpaired	max_mad_unpaired	reliable_up_to_nt	first_failure_nt	max_tested_nt
+linearpartition_b0	439	0.0003	0.0042	2216		2216
+linearpartition_b100	439	0.0004	0.1619	338	342.0000	2216
+linearpartition_b200	439	0.0003	0.1037	418	1266.0000	2216
+linearpartition_b500	439	0.0003	0.0118	2216		2216
+linearsampling_b0	439	0.0087	0.0187	2216		2216
+linearsampling_b100	439	0.0097	0.1628	338	342.0000	2216
+linearsampling_b200	439	0.0092	0.1050	418	1266.0000	2216
+linearsampling_b500	439	0.0084	0.0136	2216		2216

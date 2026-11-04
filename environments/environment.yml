@@ -1,0 +1,16 @@
+name: gap4
+channels: [conda-forge, bioconda]
+dependencies:
+  - python=3.11
+  - viennarna>=2.7
+  - cd-hit
+  - nextflow
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - pytest
+  - pip
+  - gxx
+  - make
