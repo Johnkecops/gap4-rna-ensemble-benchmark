@@ -18,3 +18,8 @@
 **What didn't work:** importing `eternabench.chemmapping_utils` (needs ETERNABENCH_PATH, seaborn, then retired `RDATKit.rdatkit` module).
 **What worked:** re-implementing its three steps (concat, 0<r<p95 filter, poly-A run>=6 exclusion) in 10 lines; reproduced published vienna_2 Pearson 0.6729 as 0.6730.
 **Note for next time:** EternaBench code is archived; copy logic, don't import.
+
+## Validating reference structures and data types in RDAT files
+**What didn't work:** accepting any dot-bracket string of the right length, and any wild-type data line as reactivity.
+**What worked:** require balanced brackets with at least one pair; skip lines whose datatype is not REACTIVITY*; plotting individual RNAs exposed both problems.
+**Note for next time:** draw a few structures before trusting aggregate base-pair scores.

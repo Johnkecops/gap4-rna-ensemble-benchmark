@@ -1,6 +1,10 @@
 ::: titlepage
 # Benchmarking RNA secondary structure ensemble generators against chemical mapping of natural RNAs, with an error audit of linear-time sampling
 
+**Running title:** Probing-based benchmark of RNA ensemble generators
+
+**Keywords:** RNA secondary structure; partition function; stochastic sampling; chemical probing; benchmark; LinearSampling
+
 Arli Aditya Parikesit^a,\*^
 
 ^a^ Department of Biotechnology, School of Life Sciences, Indonesia International Institute for Life Sciences (i3L), Jl. Pulomas Barat Kav. 88, Jakarta Timur 13210, Indonesia
@@ -8,19 +12,9 @@ Arli Aditya Parikesit^a,\*^
 \* Corresponding author. E-mail: arli.parikesit@i3l.ac.id. ORCID: 0000-0001-8716-3926
 :::
 
-## Highlights
-
-- Open pipeline scores RNA ensemble generators on 439 RMDB and MERGE-RNA RNAs
-- Exact and linear-time ViennaRNA-model tools give the same reactivity agreement
-- Beams of 100 and 200 shift unpaired probabilities by up to 0.16 above 1,000 nt
-- Beam 500 and the exact sampler stay within 0.014 of exact values up to 2,216 nt
-- The pipeline reproduces the published EternaBench ViennaRNA score (0.673)
-
 ## Abstract
 
-Chemical mapping reports reactivity averaged over every structure an RNA adopts, so it can test predicted secondary structure ensembles directly. Existing probing-based benchmarks rely on short synthetic constructs or on windows of longer RNAs, and none scores ensemble generators on full-length natural RNAs. We built a reproducible seven-stage pipeline that collects natural-RNA probing profiles from the RNA Mapping Database and from the MERGE-RNA DMS-MaP data, filters and normalises them, clusters sequences at 80% identity, and runs exact ViennaRNA sampling, LinearPartition and LinearSampling at four beam widths, and MERGE-RNA. The final set held 439 RNAs of 40 to 2,216 nucleotides and 614 reactivity profiles. On held-out RNAs shorter than 200 nucleotides, the Spearman correlation between predicted unpaired probability and reactivity was about 0.44 for every ViennaRNA-model tool, and about 0.38 between 200 and 1,000 nucleotides, with overlapping bootstrap intervals. A bias audit against the exact partition function showed that beams of 100 and 200 changed unpaired probabilities by a mean of 0.09 to 0.12 on RNAs of 1,266 and 2,216 nucleotides, whereas a beam of 500 or an infinite beam kept the mean absolute difference below 0.012. Linear-time error did not change which RNAs were predicted well (Kendall τ 0.97 to 0.99). Only two distinct RNAs exceeded 418 nucleotides, so the long-RNA error bound is preliminary. The pipeline reproduced the published EternaBench ViennaRNA score (Pearson 0.6730 against 0.6729), and its code and data are versioned for reuse.
-
-**Keywords:** RNA secondary structure; partition function; stochastic sampling; chemical probing; benchmark; LinearSampling
+Chemical mapping reports reactivity averaged over every structure an RNA adopts, so it can test predicted secondary structure ensembles directly. Existing probing-based benchmarks rely on short synthetic constructs or on windows of longer RNAs, and none scores ensemble generators on full-length natural RNAs. We built a reproducible seven-stage pipeline that collects natural-RNA probing profiles from the RNA Mapping Database and from the MERGE-RNA DMS-MaP data, filters and normalises them, clusters sequences at 80% identity, and runs exact ViennaRNA sampling, LinearPartition and LinearSampling at four beam widths, and MERGE-RNA. The final set held 439 RNAs of 40 to 2,216 nucleotides and 564 reactivity profiles. On held-out RNAs shorter than 200 nucleotides, the Spearman correlation between predicted unpaired probability and reactivity was about 0.44 for every ViennaRNA-model tool, and about 0.38 between 200 and 1,000 nucleotides, with overlapping bootstrap intervals. A bias audit against the exact partition function showed that beams of 100 and 200 changed unpaired probabilities by a mean of 0.09 to 0.12 on RNAs of 1,266 and 2,216 nucleotides, whereas a beam of 500 or an infinite beam kept the mean absolute difference below 0.012. Linear-time error did not change which RNAs were predicted well (Kendall τ 0.97 to 0.99). Only two distinct RNAs exceeded 418 nucleotides, so the long-RNA error bound is preliminary. The pipeline reproduced the published EternaBench ViennaRNA score (Pearson 0.6730 against 0.6729), and its code and data are versioned for reuse.
 
 ## 1. Introduction
 
@@ -48,7 +42,7 @@ RMDB entries were read from the metadata of the database's site repository, and 
 
 ### 2.3. Quality control and normalisation
 
-RDAT files were parsed with RDATKit, and only wild-type profiles without ligand annotations were kept, up to two replicates per construct [13]. A profile was removed when the source marked it as weak, when the mean reactivity divided by the mean error fell below 1.0, when fewer than 20 positions were measured, or when sequence positions and values could not be aligned unambiguously [11,13]. Five measured positions at each end were masked, and DMS profiles kept only adenosine and cytidine, the bases that DMS modifies at the Watson-Crick face [7]. For the MERGE-RNA data, reactivity was the mutation rate at the highest DMS concentration minus the rate at 0 mM, using positions with at least 1,000 reads in both samples [1,21].
+RDAT files were parsed with RDATKit, and only wild-type profiles without ligand annotations were kept, up to two replicates per construct [13]. Data lines annotated as read counts (datatype READS) or as unmodified controls were skipped, because they do not report reactivity [6,13]. A profile was removed when the source marked it as weak, when the mean reactivity divided by the mean error fell below 1.0, when fewer than 20 positions were measured, or when the number of values differed from the number of listed sequence positions, so that no unambiguous position mapping existed [11,13]. A reference structure was accepted only if it was a dot-bracket string of the RNA's length with balanced brackets and at least one base pair [4,13]. Five measured positions at each end were masked, and DMS profiles kept only adenosine and cytidine, the bases that DMS modifies at the Watson-Crick face [7]. For the MERGE-RNA data, reactivity was the mutation rate at the highest DMS concentration minus the rate at 0 mM, using positions with at least 1,000 reads in both samples [1,21].
 
 Each profile was normalised by the mean of its values between the 90th and 98th percentiles, a variant of the 2%/8% rule used for SHAPE data [10,11]. For profile values $r_1,\dots,r_n$ with percentiles $q_{90}$ and $q_{98}$, the normalised reactivity is
 
@@ -64,7 +58,8 @@ Output: table of (rna_id, profile, position, nucleotide, probe, reactivity)
  2:     for each construct c in f do
  3:         W <- wild-type profiles of c without ligand, at most 2
  4:         for each profile d in W do
- 5:             if flag(d) = weak or SNR(d) < SNR_min then reject d
+ 5:             if datatype(d) != REACTIVITY or modifier(d) = none then skip d
+            if flag(d) = weak or SNR(d) < SNR_min then reject d
  6:             if |positions(d)| != |values(d)| then reject d            # ambiguous alignment
  7:             mask first e and last e measured positions
  8:             if probe(d) = DMS then keep only A and C
@@ -135,7 +130,7 @@ $$\bar{x}^{*}_{b} = \frac{1}{m}\sum_{k=1}^{m} x_{j_{bk}}, \quad j_{bk} \sim \mat
 
 Resampling whole RNAs rather than positions respects the dependence between neighbouring nucleotides of one molecule [8,27].
 
-Where the RDAT file or the MERGE-RNA repository supplied a reference dot-bracket structure of matching length, the predicted structure was the set of pairs with $p_{ij} > 0.5$, which is always free of conflicts [4,5]. With sensitivity Sen = TP/(TP + FN) and positive predictive value PPV = TP/(TP + FP) over base pairs,
+Where the RDAT file or the MERGE-RNA repository supplied a valid reference structure (Section 2.3), the predicted structure was the set of pairs with $p_{ij} > 0.5$, which is always free of conflicts [4,5]. With sensitivity Sen = TP/(TP + FN) and positive predictive value PPV = TP/(TP + FP) over base pairs,
 
 $$F_1 = \frac{2\,\mathrm{PPV}\cdot\mathrm{Sen}}{\mathrm{PPV} + \mathrm{Sen}}, \qquad \mathrm{MCC} \approx \sqrt{\mathrm{PPV}\cdot\mathrm{Sen}}, \qquad (9)$$
 
@@ -197,18 +192,18 @@ As a positive control, ViennaRNA unpaired probabilities were computed for the Et
 
 ### 3.1. Data set
 
-Quality control kept 614 profiles from 439 RNAs (75,568 scored positions) and removed 277 profiles, mostly because positions and values could not be aligned (218 profiles) [11,13]. Most profiles came from SHAPE reagents (1M7, 339 profiles) and DMS (151), with smaller numbers from other probes (Table 1) [6,13]. Sequence lengths ranged from 40 to 2,216 nucleotides with a median of 133, and 384 RNAs carried a usable reference structure [1,13]. Clustering produced 123 clusters; two MERGE-RNA systems (RNase P and the *Tetrahymena* ribozyme) and their cluster members formed the fitting set of 13 RNAs, leaving 426 held-out RNAs [1,22]. The held-out set contained 325 RNAs under 200 nucleotides, 98 between 200 and 1,000 and three between 1,000 and 3,000; no RNA exceeded 3,000 nucleotides [12,13].
+Quality control kept 564 profiles from 439 RNAs (69,875 scored positions) and removed 327 data lines [11,13]. The largest groups were 155 lines whose value count did not match the listed positions and 113 read-count lines; every one of the 155 mismatches carried its own 20-nucleotide sequence annotation, which marks it as a profile of a short transcript from a length series, not of the full-length RNA (Supplementary Fig. S1) [13]. Most profiles came from SHAPE reagents (1M7, 301 profiles) and DMS (151), with smaller numbers from other probes (Table 1) [6,13]. Sequence lengths ranged from 40 to 2,216 nucleotides with a median of 133, and 204 RNAs carried a valid reference structure [1,13]. Clustering produced 123 clusters; two MERGE-RNA systems (RNase P and the *Tetrahymena* ribozyme) and their cluster members formed the fitting set of 13 RNAs, leaving 426 held-out RNAs [1,22]. The held-out set contained 325 RNAs under 200 nucleotides, 98 between 200 and 1,000 and three between 1,000 and 3,000; no RNA exceeded 3,000 nucleotides [12,13].
 
 Table 1. Composition of the benchmark after quality control. Probe counts are profiles; length strata count RNAs. Data from RMDB [13] and MERGE-RNA [1].
 
 | Item | Value |
 |---|---|
-| RNAs / profiles / scored positions | 439 / 614 / 75,568 |
+| RNAs / profiles / scored positions | 439 / 564 / 69,875 |
 | Sources | RMDB 434 RNAs; MERGE-RNA DMS-MaP 5 RNAs |
-| Profiles by probe | 1M7 339; DMS 151; SHAPE (unspecified) 33; BzCN 32; CMCT 17; 2A3 17; hydroxyl radical 10; other 15 |
+| Profiles by probe | 1M7 301; DMS 151; SHAPE (unspecified) 33; BzCN 20; CMCT 17; 2A3 17; hydroxyl radical 15; other 10 |
 | Length (min / median / max) | 40 / 133 / 2,216 nt |
-| RNAs with reference structure | 384 |
-| Profiles removed in QC | 277 (alignment 218; normalisation 19; weak 18; too few positions 17; SNR < 1.0 5) |
+| RNAs with valid reference structure | 204 |
+| Data lines removed in QC | 327 (length-series fragments 155; read counts 113; normalisation 19; weak 18; too few positions 17; SNR < 1.0 5) |
 | Clusters (cd-hit-est, 80%) | 123 |
 | MERGE-RNA fitting set | 13 RNAs (2 MERGE-RNA systems and homologues) |
 | Held-out RNAs by stratum | < 200 nt: 325; 200 to 1,000 nt: 98; 1,000 to 3,000 nt: 3; > 3,000 nt: 0 |
@@ -219,20 +214,20 @@ At infinite beam, LinearPartition reproduced ViennaRNA unpaired probabilities wi
 
 ### 3.3. Agreement with reactivity
 
-All ViennaRNA-model tools agreed with reactivity to the same degree (Table 2) [15,16,18]. Below 200 nucleotides the mean Spearman correlation was 0.444 for exact ViennaRNA and for the linear-time tools at every beam, with bootstrap intervals of about 0.42 to 0.47; the AUC was 0.74 [25,26,27]. Between 200 and 1,000 nucleotides, correlation fell to 0.376 for ViennaRNA and to 0.375 to 0.376 for the linear-time tools, with AUC again 0.74 [25,26]. In the 1,000 to 3,000 stratum only three RNA entries representing two distinct RNAs were scored, the correlation was 0.11 to 0.13 and the intervals included zero, so this stratum cannot rank tools [8,27]. Base-pair F1 of the p > 0.5 structures was 0.42 below 200 nucleotides and 0.35 between 200 and 1,000 for all tools [5,28].
+All ViennaRNA-model tools agreed with reactivity to the same degree (Table 2) [15,16,18]. Below 200 nucleotides the mean Spearman correlation was 0.445 for exact ViennaRNA and 0.444 to 0.445 for the linear-time tools at every beam, with bootstrap intervals of about 0.42 to 0.47; the AUC was 0.74 [25,26,27]. Between 200 and 1,000 nucleotides, correlation fell to 0.375 for ViennaRNA and to 0.374 to 0.375 for the linear-time tools, with AUC again 0.74 [25,26]. In the 1,000 to 3,000 stratum only three RNA entries representing two distinct RNAs were scored, the correlation was 0.11 to 0.13 and the intervals included zero, so this stratum cannot rank tools [8,27]. Against the valid references (149 RNAs below 200 nucleotides and 47 between 200 and 1,000), base-pair F1 of the p > 0.5 structures was 0.77 and 0.60 for all tools [5,28].
 
 Table 2. Agreement between predicted unpaired probability and reactivity on held-out RNAs (mean over RNAs, 95% bootstrap interval in brackets). Metrics from Eqs. (6) to (9) [5,25,26,27].
 
 | Stratum | Tool | RNAs | Spearman ρ | AUC | bp F1 |
 |---|---|---|---|---|---|
-| < 200 nt | ViennaRNA (exact) | 299 | 0.444 [0.421, 0.467] | 0.743 | 0.417 |
-| < 200 nt | LinearPartition b100 | 299 | 0.444 [0.422, 0.469] | 0.742 | 0.417 |
-| < 200 nt | LinearSampling b100 | 299 | 0.444 [0.419, 0.468] | 0.742 | 0.418 |
-| < 200 nt | LinearSampling b500 | 299 | 0.444 [0.421, 0.468] | 0.742 | 0.416 |
-| 200 to 1,000 nt | ViennaRNA (exact) | 87 | 0.376 [0.325, 0.424] | 0.742 | 0.354 |
-| 200 to 1,000 nt | LinearPartition b100 | 87 | 0.376 [0.325, 0.429] | 0.742 | 0.354 |
-| 200 to 1,000 nt | LinearSampling b100 | 87 | 0.375 [0.327, 0.423] | 0.742 | 0.353 |
-| 200 to 1,000 nt | LinearSampling b500 | 87 | 0.376 [0.323, 0.428] | 0.742 | 0.353 |
+| < 200 nt | ViennaRNA (exact) | 299 | 0.445 [0.421, 0.468] | 0.745 | 0.773 |
+| < 200 nt | LinearPartition b100 | 299 | 0.445 [0.421, 0.471] | 0.745 | 0.773 |
+| < 200 nt | LinearSampling b100 | 299 | 0.445 [0.420, 0.469] | 0.744 | 0.775 |
+| < 200 nt | LinearSampling b500 | 299 | 0.444 [0.421, 0.469] | 0.744 | 0.770 |
+| 200 to 1,000 nt | ViennaRNA (exact) | 87 | 0.375 [0.323, 0.424] | 0.741 | 0.603 |
+| 200 to 1,000 nt | LinearPartition b100 | 87 | 0.375 [0.323, 0.428] | 0.741 | 0.603 |
+| 200 to 1,000 nt | LinearSampling b100 | 87 | 0.374 [0.325, 0.423] | 0.741 | 0.601 |
+| 200 to 1,000 nt | LinearSampling b500 | 87 | 0.375 [0.321, 0.427] | 0.741 | 0.601 |
 | 1,000 to 3,000 nt | ViennaRNA (exact) | 3 | 0.107 [−0.185, 0.291] | 0.590 | n.a. |
 | 1,000 to 3,000 nt | LinearSampling b100 | 3 | 0.129 [−0.164, 0.287] | 0.594 | n.a. |
 
@@ -266,16 +261,26 @@ Table 4. Linear-time error relative to exact ViennaRNA output: mean $\mathrm{MAD
 | LinearPartition b200 | 0.0001 | 0.0002 | 0.086 | 418 | 1,266 | 0.994 |
 | LinearPartition b500 | 0.0001 | 0.0002 | 0.008 | ≥ 2,216 | none | 0.994 |
 | LinearPartition b0 | 0.0001 | 0.0002 | 0.003 | ≥ 2,216 | none | 0.994 |
-| LinearSampling b100 | 0.0047 | 0.0062 | 0.125 | 338 | 342 | 0.966 |
-| LinearSampling b200 | 0.0048 | 0.0044 | 0.088 | 418 | 1,266 | 0.967 |
-| LinearSampling b500 | 0.0047 | 0.0043 | 0.011 | ≥ 2,216 | none | 0.969 |
-| LinearSampling b0 | 0.0047 | 0.0045 | 0.007 | ≥ 2,216 | none | 0.973 |
+| LinearSampling b100 | 0.0047 | 0.0062 | 0.125 | 338 | 342 | 0.965 |
+| LinearSampling b200 | 0.0048 | 0.0044 | 0.088 | 418 | 1,266 | 0.966 |
+| LinearSampling b500 | 0.0047 | 0.0043 | 0.011 | ≥ 2,216 | none | 0.967 |
+| LinearSampling b0 | 0.0047 | 0.0045 | 0.007 | ≥ 2,216 | none | 0.970 |
 
 ![Fig. 3. Mean absolute difference in unpaired probability between linear-time and exact output against length (left; dashed line, tolerance 0.05) and against beam width (right; 10⁴ marks the infinite beam) [15,16].](fig_bias.png)
 
-Approximation error did not change which RNAs were predicted well. Kendall's τ between per-RNA correlations from exact and linear-time output was 0.993 to 0.994 for LinearPartition and 0.966 to 0.973 for LinearSampling [32,33]. The largest change in an RNA's correlation was 0.05 above 1,000 nucleotides and up to 0.12 for single short RNAs sampled by LinearSampling, where 1,000 samples leave visible noise [3,25]. The Jensen-Shannon divergence between sampled structure distributions on RNAs of at most 150 nucleotides was about 0.37 for every beam, including the infinite beam, so it measured the noise floor of two finite samples of 1,000 structures; any beam effect was too small to detect at this sample size [3,31].
+Approximation error did not change which RNAs were predicted well. Kendall's τ between per-RNA correlations from exact and linear-time output was 0.993 to 0.994 for LinearPartition and 0.965 to 0.970 for LinearSampling [32,33]. The largest change in an RNA's correlation was 0.05 above 1,000 nucleotides and up to 0.12 for single short RNAs sampled by LinearSampling, where 1,000 samples leave visible noise [3,25]. The Jensen-Shannon divergence between sampled structure distributions on RNAs of at most 150 nucleotides was about 0.37 for every beam, including the infinite beam, so it measured the noise floor of two finite samples of 1,000 structures; any beam effect was too small to detect at this sample size [3,31].
 
-### 3.6. MERGE-RNA
+### 3.6. Structure-level views
+
+Mapping normalised reactivity onto valid reference structures gave the pattern expected for SHAPE and DMS data: loops and single-stranded joins were reactive and helices were mostly unreactive (Fig. 4) [7,10,11]. In the HCV IRES the DMS signal is restricted to adenosine and cytidine, so guanosine and uridine positions appear unmeasured, as the protocol intends [1,7]. These maps indicate that masking and normalisation preserved the structural information in the profiles [11].
+
+![Fig. 4. Normalised reactivity (Eq. 1) mapped onto valid reference structures for a SHAPE profile (RNAPZ14, 131 nt) and a DMS-MaP profile (HCV IRES, 370 nt). Grey nucleotides were not measured or were masked. Layouts from the ViennaRNA naview routine [10,18].](fig_reactivity_on_structure.png)
+
+Four held-out RNAs chosen by a rule fixed before plotting (highest, median and lowest exact-ViennaRNA correlation among RNAs with a valid reference, and the RNA where beam 100 first fails above 1,000 nucleotides) show what the summary statistics mean at single-nucleotide level (Fig. 5) [2,16]. For RNAPZ14 (ρ = 0.85) predicted unpaired regions coincide with reactive loops, while for the HIV3PR construct (ρ = −0.27) a long region predicted to be single-stranded is largely unreactive, so the predicted ensemble and the data disagree there [8,25]. In the three shorter RNAs the beam-100 and exact curves overlap (MAD at most 0.007), whereas in the 1,266-nucleotide HOXA9 RNA the two pair maps share most long-range helices, yet their unpaired probabilities differ by a MAD of 0.163 [15,16].
+
+![Fig. 5. Exact ViennaRNA unpaired probability, LinearSampling beam-100 unpaired probability and normalised reactivity on four held-out RNAs selected by a predefined rule. Rows 1 to 3: reference structure coloured by exact p(unpaired) and by reactivity, with position tracks. Row 4: pairs with p > 0.5 from exact (above) and beam-100 (below) output for the 1,266-nt HOXA9 RNA, which has no valid reference [2,3,16].](fig_punp_vs_reactivity.png)
+
+### 3.7. MERGE-RNA
 
 In the shared-parameter mode, MERGE-RNA fitted $\mu_r = 0.411$ kcal/mol and $p_b = 0.227$ kcal/mol on RNase P and the *Tetrahymena* ribozyme [1]. On the three held-out systems, scored on replicate 2 within the trimmed window, its mean Spearman correlation was 0.629 and its AUC 0.804, against 0.660 and 0.837 for exact ViennaRNA on the same positions; MERGE-RNA was higher for hc16 (0.617 against 0.606) and lower for the HCV IRES (0.533 against 0.561) and the glycine riboswitch (0.735 against 0.814) [1,18]. Its unpaired probabilities differed from full-length ViennaRNA by a mean of 0.08 to 0.11, mostly because it folds the primer-trimmed sequence [1]. The per-RNA mode did not converge within the two-hour limit per RNA set for this study and produced no output [1,21].
 
@@ -287,7 +292,7 @@ The bias audit gives a concrete rule for users of linear-time tools. Beams of 10
 
 MERGE-RNA in the shared-parameter mode did not outperform ViennaRNA on the three held-out systems, but three RNAs cannot separate the methods, and the soft constraints that give MERGE-RNA most of its fit to data were not evaluated because the per-RNA fits did not converge in time [1]. The comparison also has a structural asymmetry: MERGE-RNA folds the primer-trimmed sequence while the other tools fold the full construct, which changes pair probabilities near the ends [1,21]. A fair test of probing-fitted models needs more MaP-count data than the five systems available here and a compute budget for the soft-constraint fits [1,7].
 
-The main limitation is coverage of long RNAs. Only two distinct RNAs exceeded 418 nucleotides (a 1,266-nucleotide HOXA9 RNA and a 2,216-nucleotide CMV RNA with two profiles), so the reliable-length values for beams of 100 and 200 fall inside a gap of 418 to 1,266 nucleotides that contains no data, and the long-RNA error bound is preliminary [13,15]. Ribonanza, RASP and bpRNA-1m could not be reached from the computing environment, and Ribonanza constructs are in any case windows of at most about 130 nucleotides [8,12]. Other limits apply to every tool equally: the energy model excludes pseudoknots, predictions were made at 37 °C while many RMDB experiments were done near 24 °C, and DMS and SHAPE reactivities also depend on three-dimensional context and buffer [1,29,30]. Base-pair scores used p > 0.5 structures instead of maximum expected accuracy structures and reference annotations of variable quality, so they are secondary to the reactivity scores [4,5]. TVAE-RNA, the only learned generator considered, could not be run, so the benchmark does not yet cover deep-learning ensembles [17].
+The main limitation is coverage of long RNAs. Only two distinct RNAs exceeded 418 nucleotides (a 1,266-nucleotide HOXA9 RNA and a 2,216-nucleotide CMV RNA with two profiles), so the reliable-length values for beams of 100 and 200 fall inside a gap of 418 to 1,266 nucleotides that contains no data, and the long-RNA error bound is preliminary [13,15]. Ribonanza, RASP and bpRNA-1m could not be reached from the computing environment, and Ribonanza constructs are in any case windows of at most about 130 nucleotides [8,12]. Other limits apply to every tool equally: the energy model excludes pseudoknots, predictions were made at 37 °C while many RMDB experiments were done near 24 °C, and DMS and SHAPE reactivities also depend on three-dimensional context and buffer [1,29,30]. Base-pair scores used p > 0.5 structures instead of maximum expected accuracy structures, and only 204 RNAs had a valid reference, so they are secondary to the reactivity scores [4,5]. Visual checks of the structure figures found two classes of invalid input that the first version of the QC accepted, references without pairs or with unbalanced brackets and read-count lines; both are now excluded by explicit rules, which shows the value of inspecting individual RNAs alongside summary statistics [13,20]. TVAE-RNA, the only learned generator considered, could not be run, so the benchmark does not yet cover deep-learning ensembles [17].
 
 The pipeline is designed to remove these limits as data become available. Every stage reads its inputs from versioned files, every threshold is fixed in one configuration file, and new probing archives or generators enter as new inputs to stage A or new processes in stage D [19,20]. Adding RNAs between 400 and 30,000 nucleotides, for example from transcriptome-wide probing sets, would turn the provisional error bound into a firm one and test the regime where linear-time methods are needed [6,16].
 
@@ -295,29 +300,37 @@ The pipeline is designed to remove these limits as data become available. Every 
 
 On 439 natural RNAs with chemical mapping data, exact and linear-time ViennaRNA-model ensemble generators agreed with reactivity to the same moderate degree up to 1,000 nucleotides. Linear-time sampling with beams of 100 or 200 is accurate for RNAs below about 400 nucleotides but distorts unpaired probabilities by about 0.1 above 1,000 nucleotides, whereas a beam of 500 stays within about 0.01 of the exact ensemble up to 2,216 nucleotides. The ranking of RNAs by predictability was stable under every beam. Because only two distinct RNAs exceeded 418 nucleotides, the long-RNA bound should be treated as provisional until longer natural RNAs are added. The pipeline, configuration and results are versioned so the benchmark can be extended with new data and generators.
 
-## CRediT authorship contribution statement
+## Author contributions
 
 Arli Aditya Parikesit: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Data curation, Writing – original draft, Writing – review & editing, Visualization.
 
-## Declaration of competing interest
+## Conflict of interest
 
-The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. [Author to confirm.]
+The author declares no conflict of interest. [Author to confirm.]
 
-## Declaration of generative AI and AI-assisted technologies in the writing process
+## Ethics statement
+
+This study used only publicly available RNA chemical mapping data and involved no human participants or animals.
+
+## Use of generative AI
 
 During the preparation of this work the author used Claude (Anthropic) to write and run analysis code and to draft the manuscript text. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication.
 
-## Data and code availability
+## Data availability
 
 Code, configuration, processed data, per-RNA ensemble files and result tables are in the repository github.com/Johnkecops/gap4-rna-ensemble-benchmark, which will be made public on acceptance and is available to reviewers on request. Raw RDAT files are redistributed from RMDB, and the commits of all external tools are recorded in environments/tool_commits.tsv.
 
 ## Funding
 
-This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors. [Author to confirm.]
+This research received no specific grant from any funding agency. [Author to confirm.]
 
 ## Acknowledgements
 
 The author thanks the contributors of the RNA Mapping Database and the developers of the MERGE-RNA, ViennaRNA, LinearPartition and LinearSampling software for making their data and code openly available.
+
+## Supplementary material
+
+![Supplementary Fig. S1. Examples of data lines excluded because their value count did not match the listed sequence positions. Each carries its own 20-nucleotide sequence annotation (ID Length20), marking it as a profile of a short transcript from a length series rather than of the full-length construct [13].](fig_qc_misaligned.png)
 
 ## References
 

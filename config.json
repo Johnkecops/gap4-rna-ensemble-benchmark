@@ -24,5 +24,24 @@
   "bootstrap": 1000,
   "exact_max_len": 4000,
   "jsd_max_len": 150,
-  "mad_tolerance": 0.05
+  "mad_tolerance": 0.05,
+  "viz": {
+    "_rule": "fixed before drawing (2026-11-05). QC: one off-by-one and one long-trace mismatch from qc_dropped. Aligned: highest-rho held-out RNA with reference, and the held-out MERGE-RNA DMS system with a reference containing base pairs. Held-out panel: highest, median and lowest exact-ViennaRNA rho among held-out RNAs with a reference containing base pairs, plus the RNA where beam 100 first exceeds tolerance among RNAs >1000 nt with a reference containing base pairs. Re-selected 2026-11-05 after references without pairs were excluded in QC; the >1000 nt audit case has no reference, so its arc diagram compares exact and beam-100 pairs. Re-selected again 2026-11-05 after READS lines were excluded in QC (all remaining alignment failures have fewer values than positions).",
+    "qc_mismatch": [
+      "BSUGLY_DMS_0001",
+      "CBAG4P_BZCN_0001"
+    ],
+    "aligned": [
+      "RNAPZ14_1M7_0005_0",
+      "MERGE_HCV_IRES"
+    ],
+    "heldout": [
+      "RNAPZ14_1M7_0005_0",
+      "TPPSC_1M7_0005_0",
+      "HIV3PR_DMS_0004_0",
+      "HOXA9_STD_0000_0"
+    ],
+    "linear_tool": "linearsampling_b100",
+    "max_2d_len": 450
+  }
 }

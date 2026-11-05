@@ -16,6 +16,7 @@ scripts/merge_fit.py      D  MERGE-RNA shared-parameter and per-RNA (Rep1 fit, R
 scripts/04_score.py       E  Spearman, ROC-AUC (bootstrap CI), base-pair F1/MCC, runtime/RAM scaling
 scripts/05_bias_audit.py  F  MAD pair/unpaired probability, JSD (<=150 nt), d-Spearman, Kendall tau
 scripts/06_report.py      G  leaderboard, error bound, reliable length range -> results/REPORT.md
+scripts/07_structure_viz.py G structure figures (QC diagnostic, reactivity on structure, p_unp vs reactivity)
 scripts/diskcheck.sh         disk guard (exit 1 at >=50 %, 2 at >=95 % of session allowance)
 tests/test_pipeline.py       infinite-beam LinearPartition/LinearSampling must reproduce ViennaRNA
 ```
@@ -27,7 +28,7 @@ python -m pytest -q tests
 bash scripts/00_fetch_data.sh && python scripts/01_qc.py && bash scripts/02_split.sh
 nextflow run scripts/03_ensembles.nf -with-trace results/nf_trace.tsv
 python scripts/merge_fit.py shared && python scripts/merge_fit.py perRNA
-python scripts/04_score.py && python scripts/05_bias_audit.py && python scripts/06_report.py
+python scripts/04_score.py && python scripts/05_bias_audit.py && python scripts/06_report.py && python scripts/07_structure_viz.py
 ```
 
 ## Software (installed in this cloud session, 2026-11-04)

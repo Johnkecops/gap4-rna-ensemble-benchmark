@@ -11,6 +11,16 @@ MIN_SNR, END_MASK = CFG["min_snr"], CFG["end_mask_nt"]
 rows, rnas, log = [], [], []
 
 
+def valid_ref(db, n):
+    """reference must be dot-bracket of length n with at least one pair and balanced brackets"""
+    if not db or len(db) != n or not set(db) <= set("().") or "(" not in db: return False
+    depth = 0
+    for ch in db:
+        depth += (ch == "(") - (ch == ")")
+        if depth < 0: return False
+    return depth == 0
+
+
 def norm(v):
     """2-8%-style normalisation: divide by mean of values between 90th and 98th pct."""
     ok = v[np.isfinite(v)]
@@ -49,12 +59,15 @@ for f in sorted(glob.glob("data/raw/rmdb/*.rdat")):
     g = r.annotations or {}
     probe = (g.get("modifier") or ["?"])[0]; temp = (g.get("temperature") or [""])[0]
     for ci, c in enumerate(r.constructs.values()):
-        seq = c.sequence; ref = c.structure if c.structure and set(c.structure) <= set("().") and len(c.structure) == len(seq) else ""
+        seq = c.sequence; ref = c.structure if valid_ref(c.structure, len(seq)) else ""
         wt = [d for d in c.data if (d.annotations.get("mutation") or ["WT"])[0].upper() in ("WT", "")
               and not d.annotations.get("ligand") ]
         for di, d in enumerate(wt[:2]):   # up to two WT replicates
             p = (d.annotations.get("modifier") or [probe])[0]
             if p.lower() in ("nomod", "none", "?"): continue
+            dtype = (d.annotations.get("datatype") or ["REACTIVITY"])[0].upper()
+            if not dtype.startswith("REACTIVITY"):      # READS etc. are counts, not reactivities
+                log.append((rid0, f"datatype_{dtype.lower()}")); continue
             vals = np.array(d.values, float)
             sp = np.array(d.seqpos if d.seqpos else c.seqpos, int)
             if len(sp) != len(vals): log.append((rid0, "seqpos_len_mismatch")); continue
@@ -82,7 +95,7 @@ for sysdir in sorted(glob.glob(f"{MR}/*")):
         cov_ok = (d1.total_count >= CFG["min_coverage"]) & (d0.total_count >= CFG["min_coverage"])
         v = np.where(cov_ok, d1.mut_rate - d0.mut_rate, np.nan)
         add(f"MERGE_{name}", seq, "DMS", "37C", "MERGE-RNA", d1.pos.values, v,
-            ref if len(ref) == len(seq) else "", rep=rep)
+            ref if valid_ref(ref, len(seq)) else "", rep=rep)
 
 os.makedirs("data/processed", exist_ok=True)
 df = pd.DataFrame(rows, columns=["rna_id", "profile", "pos", "nt", "probe", "reactivity"])

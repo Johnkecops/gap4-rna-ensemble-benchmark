@@ -44,3 +44,12 @@
 **What was decided:** single-author research article built from manuscript/manuscript.md by manuscript/build.py into RNA-structure-Manuscript-Arli.docx; Elsevier numbered references (33, all PubMed-validated, manuscript/reference_validation.tsv); 12 OMML display equations, 4 boxed algorithms; checklist manuscript/check_manuscript.py (19/19 pass). Data statement: public on acceptance.
 **Why:** user approved plan.md; journal guide (sciencedirect.com) blocked, so Elsevier norms used and unverified rules flagged.
 **What was rejected:** citations in declarations and highlights (exempt by convention); non-PubMed references (could not be validated here).
+
+## 2026-11-05, QC corrections found through structure visualisation
+**What was decided:** QC now (1) skips non-reactivity data lines (READS counts, 50 had been scored as replicate-2 profiles), (2) accepts a reference only if it is balanced dot-bracket with at least one pair (173 pair-less and 7 unbalanced references had been accepted; base-pair F1 was understated, 0.42 -> 0.77 below 200 nt). Profiles 614 -> 564; all 155 remaining value/position mismatches are 20-nt transcript-length fragments. Reactivity results essentially unchanged (rho 0.445 / 0.375).
+**Why:** figures showed circular layouts (no pairs), a naview segfault (unbalanced reference) and READS lines among rejected profiles.
+**What was rejected:** keeping the earlier numbers.
+
+## 2026-11-05, Retarget to Biophysics Reports
+**What was decided:** title page with running title and keywords, highlights removed, abstract <= 250 words single paragraph, declarations renamed (Author contributions, Conflict of interest, Ethics statement, Use of generative AI, Data availability, Funding); Figs 4 and 5 and Supplementary Fig. S1 added; previous Elsevier text kept as manuscript/manuscript_cbc_version.md.
+**Why:** user target journal; biophysics-reports.org and journal.hep.com.cn are blocked here, rules taken from a web-search summary of the HEP guideline page and flagged as unverified (reference style still numbered).

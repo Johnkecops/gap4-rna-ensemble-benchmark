@@ -21,16 +21,16 @@ for p in d.paragraphs:
     if t or has_math: paras.append((sec, kind, t, p))
 
 heads = [t for s, k, t, p in paras if k == "H"]
-need = ["Highlights", "Abstract", "1. Introduction", "2. Materials and methods", "3. Results", "4. Discussion", "5. Conclusions",
-        "CRediT authorship contribution statement", "Declaration of competing interest",
-        "Declaration of generative AI and AI-assisted technologies in the writing process", "Data and code availability",
-        "Funding", "Acknowledgements", "References"]
+need = ["Abstract", "1. Introduction", "2. Materials and methods", "3. Results", "4. Discussion", "5. Conclusions",
+        "Author contributions", "Conflict of interest", "Ethics statement", "Use of generative AI", "Data availability",
+        "Funding", "Acknowledgements", "Supplementary material", "References"]
 idx = [heads.index(h) if h in heads else -1 for h in need]
 check("required sections present and ordered", -1 not in idx and idx == sorted(idx), str([h for h, i in zip(need, idx) if i < 0]))
 
-hl = [t for s, k, t, p in paras if s == "Highlights" and k == "P"]
-check("highlights: 3 to 5 bullets, each <= 85 characters", 3 <= len(hl) <= 5 and all(len(x) <= 85 for x in hl), str([len(x) for x in hl]))
-ab = " ".join(t for s, k, t, p in paras if s == "Abstract" and k == "P" and not t.startswith("Keywords"))
+rt = next((t for s, k, t, p in paras if t.startswith("Running title:")), "")
+check("title page has running title and keywords before the abstract", bool(rt) and len(rt.split(":", 1)[1]) <= 60 and
+      [t for s, k, t, p in paras].index(next(t for s, k, t, p in paras if t.startswith("Keywords"))) < [h for s, k, h, p in paras].index("Abstract"), rt)
+ab = " ".join(t for s, k, t, p in paras if s == "Abstract" and k == "P")
 check("abstract <= 250 words", len(ab.split()) <= 250, f"{len(ab.split())} words")
 kw = next((t for s, k, t, p in paras if t.startswith("Keywords")), "")
 nkw = len(kw.split(":", 1)[-1].split(";")) if kw else 0
@@ -42,7 +42,7 @@ concl = " ".join(t for s, k, t, p in paras if s == "5. Conclusions")
 check("no citation in conclusions", not CITE.search(concl))
 
 body_secs = lambda s: re.match(r"^[1-4]\.", s) is not None
-missing = [t[:70] for s, k, t, p in paras if body_secs(s) and k in ("P", "CAP") and not CITE.search(t)]
+missing = [t[:70] for s, k, t, p in paras if (body_secs(s) or s == "Supplementary material") and k in ("P", "CAP") and not CITE.search(t)]
 check("every body paragraph and caption (sections 1 to 4) cites at least one reference", not missing, "; ".join(missing))
 
 # equations and pseudo-code: explanatory paragraph right before each equation must cite
@@ -96,7 +96,7 @@ nums = {
  "LP b100 MAD long": f"{B.loc[('linearpartition_b100', '1000-3000'), 'mad_unp_mean']:.3f}",
  "LS b100 MAD long": f"{B.loc[('linearsampling_b100', '1000-3000'), 'mad_unp_mean']:.3f}",
  "positive control": open(f"{R}/positive_control_eternabench.txt").read().split("pearson_ours=")[1][:6],
- "RNAs": "439", "profiles": "614", "positions": "75,568", "max length": "2,216",
+ "RNAs": "439", "profiles": "564", "positions": "69,875", "max length": "2,216", "references valid": "204",
 }
 miss = [k for k, v in nums.items() if v not in full]
 check("key numbers match results tables", not miss, str(miss))
@@ -104,7 +104,7 @@ check("key numbers match results tables", not miss, str(miss))
 # hygiene
 hidden = re.findall(r"[​‌‍⁠﻿­]", full)
 check("no zero-width or hidden watermark characters", not hidden, f"{len(hidden)} found")
-prose = "\n".join(t for s, k, t, p in paras if s not in ("References", "CRediT authorship contribution statement"))
+prose = "\n".join(t for s, k, t, p in paras if s not in ("References", "Author contributions"))
 check("no em dashes in prose", "—" not in prose)
 cp = d.core_properties
 check("document properties clean", cp.author == "Arli Aditya Parikesit" and not cp.comments and "pandoc" not in (cp.last_modified_by or "").lower(), f"{cp.author!r} {cp.last_modified_by!r}")
