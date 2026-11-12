@@ -3,6 +3,9 @@
 Pipeline of seven stages (A to G) from the Gap 4 recapitulation draft (November 2026).
 Results summary: `results/REPORT.md`. Decisions and deviations: `MEMORY.md`. Failed approaches: `ERRORS.md`.
 
+## Manuscript
+The manuscript based on this repository, "Benchmarking RNA secondary structure ensemble generators against chemical mapping of natural RNAs, with an error audit of linear-time sampling" (Parikesit, Ansori and Jakhmola), has been submitted to Biophysics Reports. It has not yet been peer reviewed, so the results in `results/REPORT.md` and the pipeline may change during revision; please cite this repository rather than the manuscript until a publication record is available.
+
 ## Layout
 ```
 config.json           all thresholds, fixed before scoring
